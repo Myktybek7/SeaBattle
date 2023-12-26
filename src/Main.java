@@ -16,7 +16,36 @@ public class Main {
             System.out.print("Enter name: ");
             String playerName = scanner.nextLine();
             clearScreen();
+
+            int[][] battleField = new int[7][7];
+
+            int createdShipsCounter = 0;
+            while (createdShipsCounter < 1) {
+                int x1 = random.nextInt(7);
+                int y1 = random.nextInt(7);
+                int x2 = random.nextInt(7);
+                int y2 = random.nextInt(7);
+                int x3 = random.nextInt(7);
+                int y3 = random.nextInt(7);
+
+                if (puttingTrippleShip(x1, x2, x3, y1, y2, y3)) {
+                    battleField[x1][y1] = 3;
+                    battleField[x2][y2] = 3;
+                    battleField[x3][y3] = 3;
+                    createdShipsCounter++;
+                }
+            }
         }
+    }
+    static boolean puttingTrippleShip(int x1, int x2, int x3 , int y1, int y2 , int y3) {
+        boolean checkingCellsAround = false;
+        if (x1 == x2 && x1 == x3 && y1 == y2 - 1 && y2 == y3 - 1){
+            checkingCellsAround = true;
+        }
+        else if (y1 == y2 && y2 == y3 && x1 == x2 - 1 && x3 == x2 + 1) {
+            checkingCellsAround = true;
+        }
+        return checkingCellsAround;
     }
     static void clearScreen() {
         System.out.print("\033[H\033[2J");

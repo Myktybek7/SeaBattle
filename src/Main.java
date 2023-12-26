@@ -71,6 +71,19 @@ public class Main {
                     }
                 }
             }
+            while (sunkShips != 7) {
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        System.out.print(PlayingField[i][j]);
+                    }
+                    System.out.println();
+                }
+                System.out.print("Enter vertical coordinate: ");
+                int xShipCoordinates = scanner.nextInt();
+                System.out.print("Enter horizontal coordinate: ");
+                int yShipCoordinates = scanner.nextInt();
+                clearScreen();
+            }
         }
     }
     static boolean puttingDoubleShips(int x1, int y1, int x2, int y2){

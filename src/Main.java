@@ -35,7 +35,59 @@ public class Main {
                     createdShipsCounter++;
                 }
             }
+            while (createdShipsCounter < 3) {
+                int x1 = random.nextInt(7);
+                int y1 = random.nextInt(7);
+                int x2 = random.nextInt(7);
+                int y2 = random.nextInt(7);
+                if (battleField[x1][y1] == 0 && battleField[x2][y2] == 0 && checkAround(x1, y1, battleField) && puttingDoubleShips(x1, y1, x2, y2) && checkAround(x2, y2, battleField)) {
+                    battleField[x1][y1] = 2;
+                    battleField[x2][y2] = 2;
+                    createdShipsCounter++;
+                }
+            }
         }
+    }
+    static boolean puttingDoubleShips(int x1, int y1, int x2, int y2){
+        boolean checkingCellsAround = false;
+        if (x1 == x2 && (y1 - y2 == 1 || y1 - y2 == -1)){
+            checkingCellsAround = true;
+        }
+        else if (y1 == y2 && (x1 - x2 == 1 || x1 - x2 == -1)){
+            checkingCellsAround = true;
+        }
+        return checkingCellsAround;
+    }
+    static boolean checkAround(int x1, int y1, int [][]battleField) {
+        boolean checkingCellsAround = false;
+        if (x1 == 0 && y1 == 0 && battleField[x1 + 1][y1] == 0 && battleField[x1][y1 + 1] == 0 && battleField[x1 + 1][y1 + 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if (x1 == 6 && y1 == 6 && battleField[x1 - 1][y1] == 0 && battleField[x1][y1 - 1] == 0 && battleField[x1 - 1][y1 - 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if (x1 == 0 && y1 !=0 && y1 != 6 && battleField [x1 + 1][y1] == 0 &&  battleField[x1][y1 - 1] == 0 && battleField[x1][y1 + 1] == 0 && battleField[x1 + 1][y1 - 1] == 0 && battleField[x1 + 1][y1 + 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if (y1 == 0  && x1!= 0 && x1!= 6 && battleField [x1][y1 + 1] == 0 && battleField[x1 - 1][y1] == 0 && battleField[x1 + 1][y1] == 0 && battleField[x1 + 1][y1 + 1] == 0 && battleField[x1 - 1][y1 + 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if (x1 == 6  && y1 !=0 && y1 != 6 && battleField [x1 - 1][y1] == 0 && battleField [x1][y1 + 1] == 0 && battleField [x1][y1 - 1] == 0 && battleField[x1 - 1][y1 - 1] == 0 && battleField[x1 - 1][y1 + 1] == 0){
+            checkingCellsAround = true;
+        }
+        else if (y1 == 6  && x1!= 0 && x1!= 6 && battleField [x1 + 1][y1] == 0 && battleField[x1 - 1][y1] == 0 && battleField[x1][y1 - 1] == 0 && battleField[x1 - 1][y1 - 1] == 0 && battleField[x1 + 1][y1 - 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if (x1 == 6 && y1 == 0 && battleField[x1 - 1][y1] == 0 && battleField[x1][y1 + 1] == 0 && battleField[x1 - 1][y1 + 1] == 0){
+            checkingCellsAround = true;
+        }
+        else if (x1 == 0 && y1 == 6 && battleField[x1 + 1][y1] == 0 && battleField[x1][y1 - 1] == 0 && battleField[x1 + 1][y1 - 1] == 0) {
+            checkingCellsAround = true;
+        }
+        else if ( y1 !=0 && y1 != 6 && x1!= 0 && x1!= 6 && battleField[x1 + 1][y1] == 0 && battleField[x1][y1 + 1] == 0 && battleField[x1 - 1][y1] == 0 && battleField[x1 + 1][y1 - 1] == 0 && battleField[x1 - 1][y1 - 1] == 0 && battleField[x1 + 1][y1 + 1] == 0 && battleField[x1 - 1][y1 + 1] == 0 && battleField[x1][y1 - 1] == 0) {
+            checkingCellsAround = true;
+        }
+        return checkingCellsAround;
     }
     static boolean puttingTrippleShip(int x1, int x2, int x3 , int y1, int y2 , int y3) {
         boolean checkingCellsAround = false;

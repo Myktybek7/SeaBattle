@@ -83,6 +83,10 @@ public class Main {
                 System.out.print("Enter horizontal coordinate: ");
                 int yShipCoordinates = scanner.nextInt();
                 clearScreen();
+                if (xShipCoordinates > 7 || xShipCoordinates < 1 || yShipCoordinates > 7 || yShipCoordinates < 1) {
+                    System.out.println("You have entered wrong coordinates. Please enter coordinates again.");
+
+                }
             }
         }
     }

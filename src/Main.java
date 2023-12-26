@@ -134,6 +134,30 @@ public class Main {
                 for (int i = 0; i < gamesNumber + 1; i++) {
                     allPlayersPoints[i] = playersPoints.get(i);
                 }
+                playersRating(allPlayersName, allPlayersPoints);
+                for (int i = 0; i < gamesNumber + 1; i++) {
+                    int numeration = i + 1;
+                    System.out.println("Rating of players:");
+                    System.out.println(numeration + ". " + allPlayersName[i] + ": " + allPlayersPoints[i]);
+                }
+                gamesOn = false;
+            }
+            else {
+                gamesNumber++;
+            }
+        }
+    }
+    static void playersRating(String[] playersName, int[] playersPoint) {
+        for (int i = 0; i < playersPoint.length - 1; i++) {
+            for (int j = 0; j < playersPoint.length - 1 - i; j++) {
+                if (playersPoint[j + 1] < playersPoint[j]) {
+                    int swap = playersPoint[j];
+                    playersPoint[j] = playersPoint[j + 1];
+                    String swapName = playersName[j];
+                    playersName[j] = playersName[j + 1];
+                    playersName[j + 1] = swapName;
+                    playersPoint[j + 1] = swap;
+                }
             }
         }
     }

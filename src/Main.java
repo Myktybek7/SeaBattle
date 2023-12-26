@@ -54,6 +54,23 @@ public class Main {
                     createdShipsCounter++;
                 }
             }
+            String[][] PlayingField = new String[8][8];
+
+            int throwsCounter = 0;
+            int sunkShips = 0;
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (j == 0 && i != 0) {
+                        PlayingField[i][j] = i + "|";
+                    }
+                    else if (i == 0 && j != 0) {
+                        PlayingField[i][j] = j + "|";
+                    }
+                    else {
+                        PlayingField[i][j] = "_|";
+                    }
+                }
+            }
         }
     }
     static boolean puttingDoubleShips(int x1, int y1, int x2, int y2){

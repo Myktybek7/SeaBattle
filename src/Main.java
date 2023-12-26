@@ -46,6 +46,14 @@ public class Main {
                     createdShipsCounter++;
                 }
             }
+            while (createdShipsCounter < 7) {
+                int x1 = random.nextInt(7);
+                int y1 = random.nextInt(7);
+                if (battleField[x1][y1] == 0 && checkAround(x1, y1, battleField)) {
+                    battleField[x1][y1] = 1;
+                    createdShipsCounter++;
+                }
+            }
         }
     }
     static boolean puttingDoubleShips(int x1, int y1, int x2, int y2){

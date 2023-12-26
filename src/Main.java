@@ -102,6 +102,9 @@ public class Main {
                             System.out.println("Congrats, you have sunk ship");
                             sunkShips++;
                         }
+                        else{
+                            System.out.println("Congrats, you have hitted ship");
+                        }
                     }
                 }
 

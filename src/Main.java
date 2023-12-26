@@ -131,6 +131,9 @@ public class Main {
                 String[] allPlayersName = new String[playersName.size()];
                 playersName.toArray(allPlayersName);
                 int[] allPlayersPoints = new int[playersPoints.size()];
+                for (int i = 0; i < gamesNumber + 1; i++) {
+                    allPlayersPoints[i] = playersPoints.get(i);
+                }
             }
         }
     }

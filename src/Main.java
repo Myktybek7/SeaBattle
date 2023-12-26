@@ -126,6 +126,20 @@ public class Main {
             scanner.nextLine();
             String restartGameAnswer = scanner.nextLine();
             clearScreen();
+
+            if (!playingOneMoreTime(restartGameAnswer)) {
+                String[] allPlayersName = new String[playersName.size()];
+                playersName.toArray(allPlayersName);
+                int[] allPlayersPoints = new int[playersPoints.size()];
+            }
+        }
+    }
+    static boolean playingOneMoreTime(String answer){
+        if (answer.equals("Yes") || answer.equals("yes")){
+            return true;
+        }
+        else {
+            return false;
         }
     }
     static boolean checkingShipsAfterHitting(int x, int y, String [][] PlayingField, int [][] BattleField){

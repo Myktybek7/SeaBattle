@@ -107,6 +107,10 @@ public class Main {
                         }
                     }
                 }
+                if(sunkShips == 7){
+                    playersName.add(gamesNumber,playerName);
+                    playersPoints.add(gamesNumber, throwsCounter);
+                }
 
             }
         }

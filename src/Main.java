@@ -111,8 +111,21 @@ public class Main {
                     playersName.add(gamesNumber,playerName);
                     playersPoints.add(gamesNumber, throwsCounter);
                 }
-
             }
+            System.out.println("You have won!");
+            System.out.println("Your number of throws: " + throwsCounter);
+
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    System.out.print(PlayingField[i][j]);
+                }
+                System.out.println();
+            }
+
+            System.out.println("Do you want to play again?");
+            scanner.nextLine();
+            String restartGameAnswer = scanner.nextLine();
+            clearScreen();
         }
     }
     static boolean checkingShipsAfterHitting(int x, int y, String [][] PlayingField, int [][] BattleField){

@@ -90,8 +90,104 @@ public class Main {
                 else if (PlayingField[xShipCoordinates][yShipCoordinates] == "○|" || PlayingField[xShipCoordinates][yShipCoordinates] == "■|" || PlayingField[xShipCoordinates][yShipCoordinates] == "×|") {
                     System.out.println("You have already fired this cage");
                 }
+                else {
+                    throwsCounter++;
+                    if (battleField[xShipCoordinates - 1][yShipCoordinates - 1] != 0) {
+                        PlayingField[xShipCoordinates][yShipCoordinates] = "×|";
+                        if (checkAround(xShipCoordinates - 1, yShipCoordinates - 1, battleField)) {
+                            PlayingField[xShipCoordinates][yShipCoordinates] = "■|";
+                            System.out.println("Congrats, you have sunk ship");
+                            sunkShips++;
+                        } else if (checkingShipsAfterHitting(xShipCoordinates, yShipCoordinates, PlayingField, battleField)) {
+                            System.out.println("Congrats, you have sunk ship");
+                            sunkShips++;
+                        }
+                    }
+                }
+
             }
         }
+    }
+    static boolean checkingShipsAfterHitting(int x, int y, String [][] PlayingField, int [][] BattleField){
+        int checkCounter = 0;
+        if (BattleField [x - 1][y - 1] == 3 && y > 2 ){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x][y - 1].equals("×|") && PlayingField[x][y - 2].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x][y - 1] = "■|";
+                PlayingField[x][y - 2] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 3 && y < 6){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x][y + 1].equals("×|") && PlayingField[x][y + 2].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x][y + 1] = "■|";
+                PlayingField[x][y + 2] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 3 && y < 7 && y > 1){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x][y - 1].equals("×|") && PlayingField[x][y + 1].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x][y + 1] = "■|";
+                PlayingField[x][y - 1] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 3 && x < 6){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x + 1][y].equals("×|") && PlayingField[x + 2][y].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x + 1][y] = "■|";
+                PlayingField[x + 2][y] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 3 && x > 2){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x - 1][y].equals("×|") && PlayingField[x - 2][y].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x - 1][y] = "■|";
+                PlayingField[x - 2][y] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 3 && x < 7 && x > 1){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x - 1][y].equals("×|") && PlayingField[x + 1][y].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x - 1][y] = "■|";
+                PlayingField[x + 1][y] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 2 && y < 7){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x][y + 1].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x][y + 1] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 2 && y > 1){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x][y - 1].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x][y - 1] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 2 && x < 7){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x + 1][y].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x + 1][y] = "■|";
+                checkCounter++;
+            }
+        }
+        if (BattleField [x - 1][y - 1] == 2 && x > 1){
+            if (PlayingField[x][y].equals("×|") && PlayingField[x - 1][y].equals("×|")){
+                PlayingField[x][y] = "■|";
+                PlayingField[x - 1][y] = "■|";
+                checkCounter++;
+            }
+        }
+        return checkCounter > 0;
+
     }
     static boolean puttingDoubleShips(int x1, int y1, int x2, int y2){
         boolean checkingCellsAround = false;

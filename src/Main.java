@@ -15,6 +15,11 @@ public class Main {
             System.out.println("Sunk - ■");
             System.out.print("Enter name: ");
             String playerName = scanner.nextLine();
+            clearScreen();
         }
     }
-}    
+    static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+}

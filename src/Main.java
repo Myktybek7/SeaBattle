@@ -87,6 +87,9 @@ public class Main {
                     System.out.println("You have entered wrong coordinates. Please enter coordinates again.");
 
                 }
+                else if (PlayingField[xShipCoordinates][yShipCoordinates] == "○|" || PlayingField[xShipCoordinates][yShipCoordinates] == "■|" || PlayingField[xShipCoordinates][yShipCoordinates] == "×|") {
+                    System.out.println("You have already fired this cage");
+                }
             }
         }
     }
